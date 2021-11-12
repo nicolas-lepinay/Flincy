@@ -1,51 +1,63 @@
 import React from 'react'
 import Carousel from "../../components/carousel/Carousel";
-import { Image, Title, Price, LineWrapper, Icon, Rating, Feedback } from "./BasketCarousel.styled";
+import { Image, Title, Category, Price, LineWrapper, Icon, Rating, Feedback } from "./RecipeCarousel.styled";
 import FullStarSVG from "../../components/SVG/FullStarSVG";
 
 import { theme } from "../../theme/Theme";
 
-function BasketCarousel() {
+function RecipeCarousel() {
 
     const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
 
     // Items, settings and style for the carousel :
     const items = [
         {
-            image: `${PF}/data/panier-apero.webp`,
-            name: "Panier apéritif",
-            price: 45.00,
-            rating: 4.9,
+            image: `${PF}/data/blueberry-cheesecake.webp`,
+            name: "Cheesecake à la myrtille",
+            category: "Desserts",
+            price: 15.25,
+            rating: 4.7,
             feedback: 124
         },
         {
-            image: `${PF}/data/panier-breakfast.webp`,
-            name: "Panier petit-déjeuner",
-            price: 35.00,
-            rating: 4.4,
+            image: `${PF}/data/chicken-pizza.webp`,
+            name: "Pizza au poulet et champignons",
+            category: "Pizza",
+            price: 20.00,
+            rating: 4.2,
             feedback: 78
         },
         {
-            image: `${PF}/data/panier-veggie.webp`,
-            name: "Panier végétarien",
-            price: 40.00,
-            rating: 4.5,
+            image: `${PF}/data/egg-burger.webp`,
+            name: "Burger aux oeufs et emmental",
+            category: "Burgers",
+            price: 14.00,
+            rating: 4.8,
             feedback: 142
         },
         {
-            image: `${PF}/data/panier-italian.webp`,
-            name: "Panier italien",
-            price: 35.00,
-            rating: 4.7,
+            image: `${PF}/data/fish-chips.webp`,
+            name: "Fish & Chips",
+            category: "Plats chauds",
+            price: 16.00,
+            rating: 4.5,
             feedback: 201
+        },
+        {
+            image: `${PF}/data/glazed-salmon.webp`,
+            name: "Saumon laqué",
+            category: "Plats chauds",
+            price: 22.00,
+            rating: 4.8,
+            feedback: 175
         }
     ]
 
     const setting = {
         dragSpeed: 1.25,
-        itemWidth: 280,
+        itemWidth: 120,
         itemHeight: 200,
-        itemSideOffsets: 20
+        itemSideOffsets: 10
       };
   
       const itemStyle = {
@@ -60,6 +72,7 @@ function BasketCarousel() {
             <div key={i} className='item' style={{ ...itemStyle }}>
                 <Image src={item.image} />
                 <Title>{item.name}</Title>
+                <Category>{item.category}</Category>
                 <LineWrapper>
                     <Icon>
                         <FullStarSVG fill={theme.primaryColor}/>
@@ -74,4 +87,4 @@ function BasketCarousel() {
     )
 }
 
-export default BasketCarousel
+export default RecipeCarousel

@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
+import { Background, Title, ContentContainer, PopularImage, LineWrapper, SeeMore } from "./Home.styled";
+
+// Corps de page ;
 import PageContainer from "../../components/pageContainer/PageContainer";
+// Header :
 import Header from "../../components/header/Header";
-
-import { PageContent, InputWrapper, Title, ContentContainer, PopularImage, LineWrapper, SeeMore, LatestContainer } from "./Home.styled";
-import { MATERIAL_STYLE } from "./Home.styled";
+// Barre de recherche :
 import SearchBar from "../../components/searchbar/SearchBar";
+// Les paniers :
 import BasketCarousel from "../../components/basketCarousel/BasketCarousel";
+// Les derniers articles :
 import LatestItems from "../../components/latestItems/LatestItems";
-
-import { theme } from "../../theme/Theme";
+// Les recettes :
+import RecipeCarousel from "../../components/recipeCarousel/RecipeCarousel";
 
 import "../../components/carousel/carousel.css"
-
-import { Search } from '@material-ui/icons';
 
 function Home() {
 
@@ -20,50 +22,37 @@ function Home() {
 
     // Current user :
     const user = {
-        username: "Émilia",
+        firstName: "Émilia",
+        lastName: "Clarke",
         city: "Avignon",
         departement: "84"
     }
 
     return (
         <>
-            <Header {...user}> </Header>
+            <Header user={user}> </Header>
             <PageContainer>
-                <PageContent>
-                    <InputWrapper>
-                        <Search style={MATERIAL_STYLE.SEARCH}/>
-                        <SearchBar/>
-                    </InputWrapper>
+                <Background>
+                    <SearchBar calendar/>
+                </Background>
 
-                    <Title>Paniers à composer</Title>
-                    <BasketCarousel/>
+                <Title>Paniers à composer</Title>
+                <BasketCarousel/>
 
-                    <ContentContainer>
+                <ContentContainer>
 
-                        <LineWrapper>
-                            <Title>Les plus populaires</Title>
-                            <SeeMore>Voir plus</SeeMore>
-                        </LineWrapper>  
-                        <PopularImage src={`${PF}/data/watermelon.webp`} /> 
+                    <LineWrapper>
+                        <Title>Les plus populaires</Title>
+                        <SeeMore>Voir plus</SeeMore>
+                    </LineWrapper>  
+                    <PopularImage src={`${PF}/data/watermelon.webp`} /> 
 
-                        <Title>Derniers articles en ligne</Title>
+                    <Title>Derniers articles en ligne</Title>
+                    <LatestItems/>
 
-                        <LatestItems/>
-
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                        <h3>Text</h3>
-                    </ContentContainer>
-                </PageContent>
+                    <Title>Recettes</Title>
+                    <RecipeCarousel/>
+                </ContentContainer>
             </PageContainer> 
         </>
     )

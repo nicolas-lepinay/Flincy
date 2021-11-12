@@ -27,41 +27,81 @@ export const GridLayout = styled.div`
     column-gap: 1rem;
     grid-template-columns: 1.3fr 0.7fr;
     grid-template-rows: 0.33fr 0.33fr 0.33fr;
-    /* height: 80px; */
     width: 100%;
 `
 
 export const Name = styled.div`
     grid-area: name;
-    background-color: #ffd000;
+    /* background-color: #ffd000; */
     font-size: 1rem;
     font-weight: 600;
 `
 
 export const Price = styled.div`
     grid-area: price;
-    background-color: #55ff00;
+    /* background-color: #55ff00; */
+    font-size: 1rem;
+    font-weight: 600;
+    justify-self: end;
 
 `
 
 export const Country = styled.div`
     grid-area: country;
-    background-color: #00eeff;
+    /* background-color: #00eeff; */
+    color: ${theme.darkGrey};
+    font-size: 0.7rem;
+    font-weight: 500;
 `
 
 export const Weight = styled.div`
     grid-area: weight;
-    background-color: #0400ff;
+    /* background-color: #0400ff; */
+    color: ${theme.darkGrey};
+    font-size: 0.7rem;
+    font-weight: 500;
+    justify-self: end;
 `
 
 export const Rating = styled.div`
     grid-area: rating;
-    background-color: #aa00ff;
+    /* background-color: #aa00ff; */
+    font-size: 0.7rem;
+    font-weight: 500;
+`
 
+export const LineWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+`
+
+export const Icon = styled.div`
+    display: flex;
+    height: 100%;
+    width: 10px; // Taille de l'étoile
+`
+
+export const Score = styled.span`
+    color: ${theme.primaryColor};
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin: 0 6px;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+`
+
+export const Feedback = styled.span`
+    color: ${theme.darkGrey};
+    font-size: 0.7rem;
+    font-weight: 600;
 `
 
 export const Shop = styled.div`
     grid-area: shop;
-    background-color: #ff00b7;
+    /* background-color: #ff00b7; */
+    color: ${theme.darkGrey};
     font-size: 0.7rem;
+    font-weight: 500;
+    justify-self: end;
 `

@@ -39,3 +39,10 @@ export const Container = styled.div`
     scroll-behavior: smooth;
     width: 100%;
 `
+
+export const PageContent = styled.div`
+    height: 100%;
+    /* margin-top: ${theme.headerHeight}; */
+    max-width: 600px;
+    width: 100%;
+`

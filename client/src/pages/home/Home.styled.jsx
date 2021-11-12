@@ -13,19 +13,18 @@ export const MATERIAL_STYLE = {
     }
 }
 
-export const PageContent = styled.div`
-    height: 100%;
-    margin-top: ${theme.headerHeight};
+export const Background = styled.div`
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom: 2px solid ${theme.primaryColor};
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    height: calc(${theme.headerHeight} + 8.125rem);
+    left: 0;
+    margin: auto;
     max-width: 600px;
+    padding-top: ${theme.headerHeight};
+    right: 0;
     width: 100%;
-`
-
-export const InputWrapper = styled.div`
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    margin: 40px 0 20px 0;
-    transform: translateX(-50%);
 `
 
 export const Title = styled.p`
@@ -40,6 +39,8 @@ export const Title = styled.p`
 export const ContentContainer = styled.div`
     border-radius: 40px;
     background-color: white;
+    box-shadow: ${theme.boxShadow6};
+    padding-bottom: calc(${theme.navbarHeight} + 20px);
 `
 
 export const PopularImage = styled.img`

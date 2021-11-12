@@ -1,5 +1,7 @@
 import React from 'react'
-import { Wrapper, Image, GridLayout, Name, Price, Country, Weight, Rating, Shop } from "./LatestItems.styled";
+import { Wrapper, Image, GridLayout, Name, Price, Country, Weight, Rating, LineWrapper, Icon, Score, Feedback, Shop } from "./LatestItems.styled";
+import FullStarSVG from "../../components/SVG/FullStarSVG";
+import { theme } from "../../theme/Theme";
 
 function LatestItems() {
 
@@ -59,7 +61,15 @@ function LatestItems() {
                         <Price>{item.price.toFixed(2)}€</Price>
                         <Country>{item.country}</Country>
                         <Weight>{item.weight}</Weight>
-                        <Rating>4.8</Rating>
+                        <Rating>
+                            <LineWrapper>
+                                <Icon>
+                                    <FullStarSVG fill={theme.primaryColor}/>
+                                </Icon>
+                                <Score>{item.rating}</Score>
+                                <Feedback>{`(${item.feedback} avis)`}</Feedback>
+                            </LineWrapper>
+                        </Rating>
                         <Shop>{item.shop}</Shop>
                     </GridLayout>
                 </Wrapper>

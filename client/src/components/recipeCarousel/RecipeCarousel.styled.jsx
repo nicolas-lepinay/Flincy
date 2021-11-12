@@ -3,15 +3,21 @@ import { theme } from "../../theme/Theme";
 
 export const Image = styled.img`
     border-radius: 15px;
-    height: 55%;
+    height: 40%;
     object-fit: cover;
     width: 100%;
 `
 
 export const Title = styled.span`
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 600;
     margin-top: 7px;
+`
+
+export const Category = styled.span`
+    color: ${theme.darkGrey};
+    font-size: 0.7rem;
+    font-weight: 500;
 `
 
 export const Price = styled.span`

@@ -7,8 +7,15 @@ export const SVG_STYLE = {
         width: "1rem"
     },
     MESSAGE : {
+        cursor: "pointer",
         height: "1.2rem",
         width: "1.2rem"
+    },
+    ARROW : {   
+        color: theme.secondaryColor,
+        cursor: "pointer",
+        height: "1.4rem",
+        width: "1.4rem"
     }
 }
 
@@ -25,7 +32,7 @@ export const Container = styled.div`
     left: 0;
     margin: auto;
     max-width: 500px;
-    padding: 0 25px;
+    padding: 0 1.5rem;
     position: fixed;
     top: 0;
     right: 0;
@@ -48,6 +55,12 @@ export const LineWrapper = styled.div`
 export const Title = styled.p`
     font-size: 1.2rem;
     font-weight: 600;
+
+`
+
+export const PageTitle = styled.p`
+    font-size: 1.3rem;
+    font-weight: 700;
 
 `
 

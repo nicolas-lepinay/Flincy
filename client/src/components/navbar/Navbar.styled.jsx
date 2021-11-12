@@ -54,6 +54,7 @@ export const Icon = styled.div`
 export const BarWrapper = styled.div`
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
+    box-shadow: ${theme.boxShadow1};
     //filter: contrast(20);
     background-color: white!important;
     overflow: hidden;

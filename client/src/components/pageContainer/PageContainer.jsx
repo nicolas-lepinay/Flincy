@@ -1,11 +1,15 @@
 import React from 'react'
-import { Wrapper, Background, Container } from "./PageContainer.styled";
+import { Wrapper, Background, Container, PageContent } from "./PageContainer.styled";
 
 function PageContainer(props) {
     return (
         <Wrapper>
             <Background/>
-            <Container> {props.children} </Container> 
+            <Container>
+                <PageContent>
+                    {props.children}
+                </PageContent>
+            </Container> 
         </Wrapper>
     )
 }
