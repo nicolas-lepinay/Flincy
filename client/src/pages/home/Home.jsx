@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { Background, Title, ContentContainer, PopularImage, LineWrapper, SeeMore } from "./Home.styled";
 
 // Corps de page ;
@@ -15,17 +14,15 @@ import LatestItems from "../../components/latestItems/LatestItems";
 import RecipeCarousel from "../../components/recipeCarousel/RecipeCarousel";
 
 import "../../components/carousel/carousel.css"
+import { user } from "../../dummyData"
+import { recipeItems, recipeSetting, recipeItemStyle } from "../../dummyData"
 
 function Home() {
 
     const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
 
-    // Current user :
-    const user = {
-        firstName: "Émilia",
-        lastName: "Clarke",
-        city: "Avignon",
-        departement: "84"
+    const style = {
+        margin: "40px 0 20px 0"
     }
 
     return (
@@ -33,7 +30,7 @@ function Home() {
             <Header user={user}> </Header>
             <PageContainer>
                 <Background>
-                    <SearchBar calendar/>
+                    <SearchBar calendar style={style}/>
                 </Background>
 
                 <Title>Paniers à composer</Title>
@@ -51,7 +48,7 @@ function Home() {
                     <LatestItems/>
 
                     <Title>Recettes</Title>
-                    <RecipeCarousel/>
+                    <RecipeCarousel data={recipeItems} setting={recipeSetting} itemStyle={recipeItemStyle}/>
                 </ContentContainer>
             </PageContainer> 
         </>

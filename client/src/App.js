@@ -6,6 +6,8 @@ import Signup from './pages/signup/Signup';
 import Welcome from './pages/welcome/Welcome';
 import Home from './pages/home/Home';
 import Products from './pages/products/Products';
+import Ingredients from './pages/products/ingredients/Ingredients';
+import Recipes from './pages/products/recipes/Recipes';
 import Cart from './pages/cart/Cart';
 import Profile from './pages/profile/Profile';
 import About from './pages/about/About';
@@ -27,6 +29,10 @@ function App() {
           <Route path="/home" component={Home} />
           <Route path="/products" component={Products} />
           <Route path="/cart/" component={Cart} />
+
+          <Route path="/ingredients/:id" component={Ingredients} />
+          <Route path="/recipes/:id" component={Recipes} />
+
           <Route path="/profile" component={Profile} />
           <Route path="/about" component={About} />
           {/* <Route component={RedirectToNotFound} /> */}

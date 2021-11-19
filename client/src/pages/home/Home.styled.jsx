@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../theme/Theme";
 
-const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
-
 export const MATERIAL_STYLE = {
     SEARCH : {
         top: "0.95rem",
@@ -22,8 +20,7 @@ export const Background = styled.div`
     left: 0;
     margin: auto;
     max-width: 600px;
-    padding-top: ${theme.headerHeight};
-    right: 0;
+    padding-top: calc(${theme.headerHeight} + 2.5rem);
     width: 100%;
 `
 

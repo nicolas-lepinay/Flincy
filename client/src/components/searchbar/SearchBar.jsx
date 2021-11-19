@@ -53,7 +53,6 @@ const InputWrapper = styled.div`
     position: relative;
     display: inline-block;
     left: 50%;
-    margin: 40px 0 20px 0;
     transform: translateX(-50%);
 `
 

@@ -6,8 +6,11 @@ import MessageSVG from "../SVG/MessageSVG";
 import LocationSVG from "../SVG/LocationSVG";
 import CheckSVG from "../SVG/CheckSVG";
 import { ArrowBackIosRounded } from '@material-ui/icons';
+import { useHistory } from "react-router-dom";
 
 function Header(props) {
+
+    const history = useHistory();
 
     const HeaderWithUser = ( { user } ) => {
         return (
@@ -30,7 +33,7 @@ function Header(props) {
         return (
             <Container>
                 <LineWrapper>
-                    <ArrowBackIosRounded style={SVG_STYLE.ARROW}/>
+                    <ArrowBackIosRounded onClick={history.goBack} style={SVG_STYLE.ARROW}/>
                     <PageTitle>{props.children}</PageTitle>
                     <MessageSVG style={SVG_STYLE.MESSAGE} />
                 </LineWrapper>

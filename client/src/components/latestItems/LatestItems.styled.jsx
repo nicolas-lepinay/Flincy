@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../theme/Theme";
 
-const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
-
 export const Wrapper = styled.div`
     align-items: flex-start;
     display: flex;

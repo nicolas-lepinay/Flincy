@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, IconWrapper, Icon, BarWrapper,  Bar, Circle, LEFT_POSITION } from "./Navbar.styled";
 import { theme } from "../../theme/Theme";
@@ -10,10 +10,7 @@ import AboutSVG from "../SVG/AboutSVG";
 
 export default function Navbar() {
 
-    const [page, setPage] = useState("home");
-
-    const home = useRef(null);
-    const products = useRef(null);
+    const home = useRef(null); const products = useRef(null);
     const cart = useRef(null);
     const profile = useRef(null);
     const about = useRef(null);
@@ -27,39 +24,35 @@ export default function Navbar() {
         ));
     }
 
-    const handleClick = (newPage) => {
-        setPage(newPage);
-    }
-
     useEffect( () => {
-        if(page === "home") {
+        if(window.location.pathname === "/home") {
             liftUp(home);
             circle.current.style.left = LEFT_POSITION.home;
         }
-        else if (page === "products") {
+        else if (window.location.pathname === "/products") {
             liftUp(products);
             circle.current.style.left = LEFT_POSITION.products;
         }
-        else if (page === "cart") {
+        else if (window.location.pathname === "/cart") {
             liftUp(cart);
             circle.current.style.left = LEFT_POSITION.cart;
         }
-        else if (page === "profile") {
+        else if (window.location.pathname === "/profile") {
             liftUp(profile);
             circle.current.style.left = LEFT_POSITION.profile;
         }
-        else if (page === "about") {
+        else if (window.location.pathname === "/about") {
             liftUp(about);
             circle.current.style.left = LEFT_POSITION.about;
         }
-    }, [page])
+    })
 
     return (
         <Container>
             <IconWrapper>
                 <Link to="/home">
                     <Icon ref={home}>
-                        <HomeSVG onClick={() => handleClick("home")} stroke={theme.secondaryColor} />
+                        <HomeSVG stroke={theme.secondaryColor} />
                     </Icon>
                 </Link>
             </IconWrapper>
@@ -67,7 +60,7 @@ export default function Navbar() {
             <IconWrapper>
                 <Link to="/products">
                     <Icon ref={products}>
-                        <ProductsSVG onClick={() => handleClick("products")} stroke={theme.secondaryColor} fill={theme.secondaryColor} />
+                        <ProductsSVG stroke={theme.secondaryColor} fill={theme.secondaryColor} />
                     </Icon>
                 </Link>
             </IconWrapper>
@@ -75,7 +68,7 @@ export default function Navbar() {
             <IconWrapper>
                 <Link to="/cart">
                     <Icon ref={cart}>
-                        <CartSVG onClick={() => handleClick("cart")} fill={theme.secondaryColor} />
+                        <CartSVG fill={theme.secondaryColor} />
                     </Icon>
                 </Link>
             </IconWrapper>
@@ -83,7 +76,7 @@ export default function Navbar() {
             <IconWrapper>
                 <Link to="/profile">
                     <Icon ref={profile}>
-                        <ProfileSVG onClick={() => handleClick("profile")} fill={theme.secondaryColor} />
+                        <ProfileSVG fill={theme.secondaryColor} />
                     </Icon>
                 </Link>
             </IconWrapper>
@@ -91,12 +84,12 @@ export default function Navbar() {
             <IconWrapper>
                 <Link to="/about">
                     <Icon ref={about}>
-                        <AboutSVG onClick={() => handleClick("about")} fill={theme.secondaryColor} />
+                        <AboutSVG fill={theme.secondaryColor} />
                     </Icon>
                 </Link>
             </IconWrapper>
 
-            <Circle ref={circle} page={page}/>
+            <Circle ref={circle}/>
 
             <BarWrapper>
                 <Bar/>

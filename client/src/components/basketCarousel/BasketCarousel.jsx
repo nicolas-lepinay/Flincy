@@ -4,60 +4,14 @@ import { Image, Title, Price, LineWrapper, Icon, Rating, Feedback } from "./Bask
 import FullStarSVG from "../../components/SVG/FullStarSVG";
 
 import { theme } from "../../theme/Theme";
+import { basketItems, basketSetting, basketItemStyle } from "../../dummyData"
 
 function BasketCarousel() {
 
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
-
-    // Items, settings and style for the carousel :
-    const items = [
-        {
-            image: `${PF}/data/panier-apero.webp`,
-            name: "Panier apéritif",
-            price: 45.00,
-            rating: 4.9,
-            feedback: 124
-        },
-        {
-            image: `${PF}/data/panier-breakfast.webp`,
-            name: "Panier petit-déjeuner",
-            price: 35.00,
-            rating: 4.4,
-            feedback: 78
-        },
-        {
-            image: `${PF}/data/panier-veggie.webp`,
-            name: "Panier végétarien",
-            price: 40.00,
-            rating: 4.5,
-            feedback: 142
-        },
-        {
-            image: `${PF}/data/panier-italian.webp`,
-            name: "Panier italien",
-            price: 35.00,
-            rating: 4.7,
-            feedback: 201
-        }
-    ]
-
-    const setting = {
-        dragSpeed: 1.25,
-        itemWidth: 280,
-        itemHeight: 200,
-        itemSideOffsets: 20
-      };
-  
-      const itemStyle = {
-        width: `${setting.itemWidth}px`,
-        height: `${setting.itemHeight}px`,
-        margin: `0 ${setting.itemSideOffsets}px`
-      };
-
     return (
-        <Carousel _data={items} {...setting}>
-        { items.map((item, i) => (
-            <div key={i} className='item' style={{ ...itemStyle }}>
+        <Carousel _data={basketItems} {...basketSetting}>
+        { basketItems.map((item, i) => (
+            <div key={i} className='item' style={{ ...basketItemStyle }}>
                 <Image src={item.image} />
                 <Title>{item.name}</Title>
                 <LineWrapper>
