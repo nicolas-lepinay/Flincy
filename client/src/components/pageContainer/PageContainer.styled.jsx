@@ -5,7 +5,7 @@ const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
 
 
 export const Wrapper = styled.div`
-    background-color: ${theme.primaryBgColor};
+    background-color: ${props => (props.blank ? `white` : `${theme.primaryBgColor}`)};
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 `
 
 export const Background = styled.div`
-    background-image: url('${PF}/ui/props_black.webp');
+    background-image: ${props => (props.blank ? `none` : `url('${PF}/ui/props_black.webp')`)};
     background-position: 0 70px; // Offset top
     background-repeat: repeat;
     height: 100vh;

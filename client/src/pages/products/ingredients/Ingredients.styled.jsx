@@ -31,3 +31,22 @@ export const Title = styled.p`
     margin-left: 20px;
     padding-top: 25px;
 `
+
+export const LineWrapper = styled.div`
+    align-items: baseline;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`
+
+export const Clickable = styled.span`
+    color: ${theme.secondaryColor};
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-right: 25px;
+    &.right {
+        float: right;
+        margin-bottom: 150px;
+    }
+`

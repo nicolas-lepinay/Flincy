@@ -69,7 +69,7 @@ const Calendar = styled.div`
     width: 4.3rem;
 `
 
-function SearchBar({ calendar}) {
+function SearchBar({ calendar, date }) {
 
     const SearchBarSimple = () => {
         return (
@@ -91,9 +91,20 @@ function SearchBar({ calendar}) {
         )
     }
 
+    const SearchBarForDates = () => {
+        return (
+            <InputWrapper>
+                <Input type="text" placeholder="Sélectionner une date" style={{paddingLeft: "2rem"}}/>
+                <Calendar/>
+                <EventOutlined style={MATERIAL_STYLE.EVENT}/>
+            </InputWrapper>
+        )
+    }
+
+
     return (
         <>
-            {calendar ? <SearchBarWithCalendar/> : <SearchBarSimple/> }
+            {calendar ? <SearchBarWithCalendar/> : date ? <SearchBarForDates/> : <SearchBarSimple/> }
         </>
     )
 }

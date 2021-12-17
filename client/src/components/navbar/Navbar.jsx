@@ -9,7 +9,6 @@ import ProfileSVG from "../SVG/ProfileSVG";
 import AboutSVG from "../SVG/AboutSVG";
 
 export default function Navbar() {
-
     const home = useRef(null); const products = useRef(null);
     const cart = useRef(null);
     const profile = useRef(null);
@@ -29,11 +28,11 @@ export default function Navbar() {
             liftUp(home);
             circle.current.style.left = LEFT_POSITION.home;
         }
-        else if (window.location.pathname === "/products") {
+        else if (window.location.pathname === "/products" || window.location.pathname.startsWith("/article/")) {
             liftUp(products);
             circle.current.style.left = LEFT_POSITION.products;
         }
-        else if (window.location.pathname === "/cart") {
+        else if (window.location.pathname === "/cart" || window.location.pathname === "/shipping") {
             liftUp(cart);
             circle.current.style.left = LEFT_POSITION.cart;
         }
@@ -52,7 +51,7 @@ export default function Navbar() {
             <IconWrapper>
                 <Link to="/home">
                     <Icon ref={home}>
-                        <HomeSVG stroke={theme.secondaryColor} />
+                        <HomeSVG />
                     </Icon>
                 </Link>
             </IconWrapper>
@@ -60,7 +59,7 @@ export default function Navbar() {
             <IconWrapper>
                 <Link to="/products">
                     <Icon ref={products}>
-                        <ProductsSVG stroke={theme.secondaryColor} fill={theme.secondaryColor} />
+                        <ProductsSVG />
                     </Icon>
                 </Link>
             </IconWrapper>
@@ -68,7 +67,7 @@ export default function Navbar() {
             <IconWrapper>
                 <Link to="/cart">
                     <Icon ref={cart}>
-                        <CartSVG fill={theme.secondaryColor} />
+                        <CartSVG />
                     </Icon>
                 </Link>
             </IconWrapper>
@@ -76,7 +75,7 @@ export default function Navbar() {
             <IconWrapper>
                 <Link to="/profile">
                     <Icon ref={profile}>
-                        <ProfileSVG fill={theme.secondaryColor} />
+                        <ProfileSVG/>
                     </Icon>
                 </Link>
             </IconWrapper>

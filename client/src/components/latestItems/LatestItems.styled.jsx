@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 
 export const Image = styled.img`
     border-radius: 10px;
+    cursor: pointer;
     height: 80px;
     margin-right: 1.25rem;
     object-fit: cover;

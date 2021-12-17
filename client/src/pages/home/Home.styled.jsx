@@ -1,16 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../theme/Theme";
 
-export const MATERIAL_STYLE = {
-    SEARCH : {
-        top: "0.95rem",
-        left: "1.5rem",
-        opacity: "0.3",
-        position: "absolute",
-        width: "1.5rem"
-    }
-}
-
 export const Background = styled.div`
     background-color: rgba(255, 255, 255, 1);
     border-bottom: 2px solid ${theme.primaryColor};

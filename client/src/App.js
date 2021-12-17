@@ -8,9 +8,11 @@ import Home from './pages/home/Home';
 import Products from './pages/products/Products';
 import Ingredients from './pages/products/ingredients/Ingredients';
 import Recipes from './pages/products/recipes/Recipes';
+import Article from './pages/article/Article';
 import Cart from './pages/cart/Cart';
 import Profile from './pages/profile/Profile';
 import About from './pages/about/About';
+import Shipping from './pages/shipping/Shipping';
 import RedirectToNotFound from "./components/redirectToNotFound/RedirectToNotFound";
 
 import {
@@ -29,9 +31,11 @@ function App() {
           <Route path="/home" component={Home} />
           <Route path="/products" component={Products} />
           <Route path="/cart/" component={Cart} />
+          <Route path="/shipping" component={Shipping} />
 
-          <Route path="/ingredients/:id" component={Ingredients} />
-          <Route path="/recipes/:id" component={Recipes} />
+          <Route path="/ingredients/:categoryId" component={Ingredients} />
+          <Route path="/recipes/:categoryId" component={Recipes} />
+          <Route path="/article/:articleId" component={Article} />
 
           <Route path="/profile" component={Profile} />
           <Route path="/about" component={About} />

@@ -15,7 +15,7 @@ import RecipeCarousel from "../../components/recipeCarousel/RecipeCarousel";
 
 import "../../components/carousel/carousel.css"
 import { user } from "../../dummyData"
-import { recipeItems, recipeSetting, recipeItemStyle } from "../../dummyData"
+import { recipeItems, recipeSetting, recipeItemStyle, latestItems } from "../../dummyData"
 
 function Home() {
 
@@ -45,7 +45,7 @@ function Home() {
                     <PopularImage src={`${PF}/data/watermelon.webp`} /> 
 
                     <Title>Derniers articles en ligne</Title>
-                    <LatestItems/>
+                    <LatestItems data={latestItems} />
 
                     <Title>Recettes</Title>
                     <RecipeCarousel data={recipeItems} setting={recipeSetting} itemStyle={recipeItemStyle}/>

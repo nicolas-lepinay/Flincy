@@ -3,6 +3,7 @@ import { theme } from "../../theme/Theme";
 
 export const Image = styled.img`
     border-radius: 15px;
+    cursoir: pointer;
     height: 55%;
     object-fit: cover;
     width: 100%;

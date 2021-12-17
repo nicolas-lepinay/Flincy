@@ -15,7 +15,7 @@ export const Container = styled.div`
     bottom: 0;
     box-sizing: border-box;
     display: flex;
-    height: 260px;
+    height: 100px;
     justify-content: center;
     left: 0;
     margin: auto;
@@ -46,9 +46,16 @@ export const Icon = styled.div`
     display: flex;
     justify-content: center;
     margin-bottom: 0px;
-    width: 24px!important; // Taille des icônes
+    width: 24px; // Taille des icônes
+    height: 24px;
     z-index: 3;
     transition: 250ms 150ms cubic-bezier(0.14, -0.08, 0.74, 1.4);
+    & svg {
+        stroke: ${theme.secondaryColor};
+        fill: ${theme.secondaryColor};
+        width: 24px;
+        height: 24px;
+    }
 `
 
 export const BarWrapper = styled.div`
@@ -80,7 +87,7 @@ export const Circle = styled.div`
     left: 0;
     margin: auto;
     position: absolute;
-    top: 160px;
+    top: 0;
     right: 0;
     width: 65px;
     z-index: 1;
