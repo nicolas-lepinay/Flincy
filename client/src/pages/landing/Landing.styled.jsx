@@ -3,13 +3,6 @@ import { theme } from "../../theme/Theme";
 
 const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
 
-// const theme = {
-//     bgColor: "rgba(18, 97, 84)",
-//     btnColor: "rgba(247, 190, 0)",
-//     width: "100%", // iPhone 13 viewport width : "390px"
-//     height: "100%" // iPhone 13 viewport height :  "845px"
-// }
-
 export const LandingPage = styled.div`
     background-color: ${theme.secondaryBgColor};
     width: 100%;

@@ -13,6 +13,8 @@ import Cart from './pages/cart/Cart';
 import Profile from './pages/profile/Profile';
 import About from './pages/about/About';
 import Shipping from './pages/shipping/Shipping';
+
+import ToggleHeart from './components/toggleHeart/ToggleHeart';
 import RedirectToNotFound from "./components/redirectToNotFound/RedirectToNotFound";
 
 import {
@@ -53,6 +55,8 @@ function App() {
             <Route path="/sign-in" component={Signin} />
             <Route path="/sign-up" component={Signup} />
             <Route path="/welcome" component={Welcome} />
+            <Route path="/test" component={ToggleHeart} />
+
             {/* <Route path="/not-found" component={My404Page} /> */}
             <Route component={DefaultRoutes} />
         </Switch>

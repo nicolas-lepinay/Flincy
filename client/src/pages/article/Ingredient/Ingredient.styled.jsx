@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { keyframes } from 'styled-components'
 import { theme } from "../../../theme/Theme";
 
 const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
@@ -16,6 +17,49 @@ export const MATERIAL_STYLE = {
     }
 }
 
+const heart = keyframes`
+ 0% { }
+ 18% { font-size: 0 }
+`
+
+const bubble = keyframes`
+  15% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    border-color: #cc8ef5;
+    border-width: 2.25rem;
+  }
+  30% { }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    border-color: #cc8ef5;
+    border-width: 0;
+  }
+`
+
+const sparkles = keyframes`
+  0% { }
+  20% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+    box-shadow: 0.32476rem -2.4375rem 0 0rem #ff8080,
+      -0.32476rem -2.0625rem 0 0rem #ffed80,
+      2.1082rem -1.26585rem 0 0rem #ffed80,
+      1.41004rem -1.53985rem 0 0rem #a4ff80,
+      2.30412rem 0.85901rem 0 0rem #a4ff80, 2.08305rem 0.14233rem 0 0rem #80ffc8,
+      0.76499rem 2.33702rem 0 0rem #80ffc8, 1.18748rem 1.71734rem 0 0rem #80c8ff,
+      -1.35019rem 2.0552rem 0 0rem #80c8ff,
+      -0.60229rem 1.99916rem 0 0rem #a480ff,
+      -2.44865rem 0.22578rem 0 0rem #a480ff,
+      -1.93852rem 0.77557rem 0 0rem #ff80ed,
+      -1.70323rem -1.77366rem 0 0rem #ff80ed,
+      -1.81501rem -1.03204rem 0 0rem #ff8080;
+  }
+`
+
 export const ImageContainer = styled.div`
     background: linear-gradient(to top, transparent 50%, rgba(0, 0, 0, 0.9)), center / cover no-repeat url(${props => props.source});
     background-position: top;
@@ -29,11 +73,26 @@ export const ContentContainer = styled.div`
     border-top-right-radius: 30px;
     box-shadow: ${theme.boxShadow1};
     margin-top: -30px;
+    position: relative;
     width: 100%;
 `
 
 export const Wrapper = styled.div`
     padding: 40px 30px 0 30px;
+`
+
+export const HeartContainer = styled.div`
+    align-items: center;
+    background: white;
+    border-radius: 50%;
+    box-shadow: ${theme.boxShadow3};
+    display: flex;
+    height: 60px;
+    justify-content:center;
+    position: absolute;
+    top: -30px;
+    right: 40px;
+    width: 60px;
 `
 
 export const GridLayout = styled.div`

@@ -5,9 +5,10 @@ import { latestIngredients, recipeItems, latestItems, basketItems, recommandatio
 
 // Corps de page :
 import PageContainer from "../../../components/pageContainer/PageContainer";
-import { MATERIAL_STYLE, ImageContainer, ContentContainer, Wrapper, Name, GridLayout, Country, Ratings, Feedback, Price, Weight, StarsWrapper, Shop, Description, CartContainer, LineWrapper, ButtonsWrapper, AddButton, List, Row, Separator } from './Ingredient.styled'
+import { MATERIAL_STYLE, ImageContainer, ContentContainer, Wrapper, Name, HeartContainer, GridLayout, Country, Ratings, Feedback, Price, Weight, StarsWrapper, Shop, Description, CartContainer, LineWrapper, ButtonsWrapper, AddButton, List, Row, Separator } from './Ingredient.styled'
 import { ArrowBackIosRounded } from '@material-ui/icons';
 import StarSVG from '../../../components/SVG/StarSVG.jsx';
+import ToggleHeart from '../../../components/toggleHeart/ToggleHeart.jsx';
 import { theme } from "../../../theme/Theme";
 
 import { useHistory } from "react-router-dom";
@@ -57,6 +58,9 @@ function Ingredient({ article }) {
             </ImageContainer>
 
             <ContentContainer>
+                <HeartContainer>
+                    <ToggleHeart/>
+                </HeartContainer>
                 <Wrapper>
                     <GridLayout>
                         <Name>{article.name}</Name>

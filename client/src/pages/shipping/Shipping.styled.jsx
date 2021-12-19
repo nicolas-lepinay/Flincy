@@ -127,6 +127,9 @@ export const Container = styled.div`
             }
         }
     }
+    &.final {
+        margin-bottom: 120px;
+    }
 `
 
 export const CardInfo = styled.div`
@@ -156,6 +159,7 @@ export const CardInfo = styled.div`
 `
 
 export const Row = styled.div`
+    align-items: center;
     column-gap: 1rem;
     display: flex;
     justify-content: space-between;
@@ -170,4 +174,27 @@ export const Row = styled.div`
     &>input {
         flex: 30;   
     }
+    &>p {
+        font-size: 0.85rem;   
+    }
+    &.total > p {
+        font-size: 1.2rem;   
+        font-weight: 600;
+        margin-top: 1rem;
+    }
+`
+
+export const Button = styled.button`
+    background-color: ${theme.btnColor};
+    border: 2px solid ${theme.btnColor};
+    border-radius: 3rem;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 10px 0;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    width: 150px;
 `
