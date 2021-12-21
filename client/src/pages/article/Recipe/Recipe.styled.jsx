@@ -29,11 +29,26 @@ export const ContentContainer = styled.div`
     border-top-right-radius: 30px;
     box-shadow: ${theme.boxShadow1};
     margin-top: -30px;
+    position: relative;
     width: 100%;
 `
 
 export const Wrapper = styled.div`
     padding: 40px 30px 0 30px;
+`
+
+export const HeartContainer = styled.div`
+    align-items: center;
+    background: white;
+    border-radius: 50%;
+    box-shadow: ${theme.boxShadow3};
+    display: flex;
+    height: 60px;
+    justify-content:center;
+    position: absolute;
+    top: -30px;
+    right: 40px;
+    width: 60px;
 `
 
 export const GridLayout = styled.div`

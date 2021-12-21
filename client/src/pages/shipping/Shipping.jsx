@@ -16,8 +16,6 @@ import { user } from "../../dummyData"
 // FontAwesome :
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
-import { faDotCircle } from "@fortawesome/free-regular-svg-icons";
-import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
 function Shipping() {
 
@@ -95,7 +93,7 @@ function Shipping() {
                     <label>
                         <span>Paiement sur place</span>
                         <input type ="radio" name="payment" value="sur place" onChange={() => setPayment('sur place')}/>
-                        <Circle></Circle>
+                        <Circle/>
                     </label>
 
                     <label>
@@ -104,13 +102,13 @@ function Shipping() {
                             <span>**** **** **** 2187</span>
                         </div>
                         <input type ="radio" name="payment" value="currentCard" onChange={() => setPayment('currentCard')}/>
-                        <Circle></Circle>
+                        <Circle/>
                     </label>
 
                     <label>
                         💳 Ajouter une nouvelle carte
                         <input type ="radio" name="payment" value="newCard" onChange={() => setPayment('newCard')} />
-                        <Circle></Circle>
+                        <Circle/>
                     </label>
 
                     {payment === "newCard" &&          

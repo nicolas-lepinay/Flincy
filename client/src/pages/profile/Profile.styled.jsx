@@ -3,7 +3,7 @@ import { theme } from "../../theme/Theme";
 
 export const MATERIAL_STYLE = {
     LOGOFF: {
-        color: "black",
+        color: `${theme.secondaryColor}`,
         cursor: "pointer",
         fontSize: "1.2rem",
         marginRight: "8px",
@@ -107,6 +107,7 @@ export const FlexContainer = styled.div`
         margin: 20px 0 10px 0;
     }
     & h4 {
+        color: ${theme.secondaryColor};
         cursor: pointer;
         font-size: 0.9rem;
         font-weight: 600;

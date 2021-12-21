@@ -10,8 +10,10 @@ import { MATERIAL_STYLE, FlexContainer, Picture, Row } from "./Profile.styled";
 import PageContainer from "../../components/pageContainer/PageContainer";
 // Header :
 import Header from "../../components/header/Header";
+// Orders :
+import OrderItem from "../../components/orderItem/OrderItem";
 
-import { user } from "../../dummyData";
+import { user, orders } from "../../dummyData";
 
 import { PowerSettingsNew, Person, Email, Phone, Home, BusinessCenter } from '@material-ui/icons';
 
@@ -84,7 +86,9 @@ function Profile() {
     const Orders = () => {
         return (
             <div>
-                <h1>Orders section</h1>
+                {orders.map( (order, i) => 
+                    <OrderItem key={i} order={order}/>
+                )}
             </div>
         )
     }
