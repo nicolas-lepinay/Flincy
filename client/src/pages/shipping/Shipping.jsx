@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FONTAWESOME_STYLE, Background, Heading, Hours, Container, Title, Circle, CardInfo, Row, Button } from "./Shipping.styled";
 // Corps de page ;
 import PageContainer from "../../components/pageContainer/PageContainer";
@@ -13,16 +13,26 @@ import { AnimatePresence } from 'framer-motion';
 
 import { user } from "../../dummyData"
 
+// Axios :
+import axios from 'axios';
+
 // FontAwesome :
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
 
-function Shipping() {
+// Stripe Checkout :
+import StripeCheckout from 'react-stripe-checkout';
 
+
+function Shipping() {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
+    const KEY = "pk_test_51K9uyuJN6UJMK9bX8jrSOB4ZcPGBGd6vAs4Xl0r7QK27DkoIhmc2ZmOHxGC4NCH2TAfbiajp9T5NHnz6S69UpL4a00FcgREvXI"
+    
     const [hour, setHour] = useState('');
     const [payment, setPayment] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-
+    const [stripeToken, setStripeToken] = useState({});
+    
     const style = {
         margin: "40px 0 20px 0"
     }
@@ -37,6 +47,26 @@ function Shipping() {
         setIsOpen(false);
         document.getElementById('root').style.filter = 'blur(0px)';
     }
+
+    const onToken = (token) => {
+        setStripeToken(token);
+        openModal();
+    }
+
+    useEffect( () => {
+        const makeRequest = async () => {
+            try {
+                const res = await axios.post('http://localhost:8000/api/checkout/payment', {
+                    tokenId: stripeToken.id,
+                    amount: 2000,
+                })
+                console.log(res.data)
+            } catch(err) {
+                console.log(err)
+            }
+        }
+        Object.keys(stripeToken).length != 0 && makeRequest();
+    }, [stripeToken])
 
     return (
         <>
@@ -155,7 +185,18 @@ function Shipping() {
                 <Container className="final">
                     <Row>
                         <h2>38.70€</h2>
-                        <Button onClick={openModal}>Commander</Button>
+                        <StripeCheckout
+                            name="Flincy"
+                            image={`${PF}/ui/F_logo.png`}
+                            billingAddress
+                            shippingAddress
+                            description= "Le total de la commande est de 20.00€."
+                            amount={2000}
+                            token={onToken}
+                            stripeKey={KEY}
+                        >
+                            <Button>Commander</Button>
+                        </StripeCheckout>
                     </Row>
                 </Container>
 

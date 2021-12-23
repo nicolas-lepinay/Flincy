@@ -7,10 +7,7 @@ const ProductSchema = new mongoose.Schema({
     },
     image:{
         type: String,
-    },
-    mobile:{
-        type: String,
-        required: true,
+        default: "",
     },
     country:{
         type: String,
@@ -37,12 +34,8 @@ const ProductSchema = new mongoose.Schema({
     feedback:{
         type: Number,
     },
-    categoryId:{
-        type: String,
-        required: true,
-    },
-    subcategoryId:{
-        type: String,
+    categories:{
+        type: Array,
         required: true,
     },
 }, {timestamps: true});
