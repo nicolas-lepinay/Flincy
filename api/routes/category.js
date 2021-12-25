@@ -14,4 +14,32 @@ router.post('/', async (req, res) => {
     }
 });
 
+// TROUVER UNE CATEGORIE
+router.get('/find/:id', async (req, res) => {
+    try {
+        const category = await Category.findById(req.params.id)
+        res.status(200).json(category);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// TROUVER LES SOUS-CATEGORIES D'UNE CATEGORIE
+router.get('/subcategories/:categoryId', async (req, res) => {
+    try {
+        // La catégorie parente :
+        const category = await Category.findById(req.params.categoryId);
+        // Les sous-catégories (enfants) :
+        const subcategories = await Promise.all(
+            category.subcategories.map(id=> {
+                return Category.findById(id)
+            })
+        );
+        res.status(200).json(subcategories);
+        
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;

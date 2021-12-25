@@ -18,8 +18,8 @@ import AddToCart from "../../../modals/addToCart/AddToCart"
 import { AnimatePresence } from 'framer-motion';
 
 function Ingredient({ article }) {
-
-    // const [article, setArticle] = useState({});
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
+    
     const [stars, setStars] = useState([]);
     const [quantity, setQuantity] = useState(1);
     const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +53,7 @@ function Ingredient({ article }) {
     return (
         <>
         <PageContainer blank>
-            <ImageContainer source={article.image}>
+            <ImageContainer source={`${PF}/data/${article.image}`}>
                 <ArrowBackIosRounded onClick={history.goBack} style={MATERIAL_STYLE.ARROW}/>
             </ImageContainer>
 

@@ -1,13 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ButtonsWrapper, Row } from './Item.styled'
 
-function Item({ item }) {
+import axios from "axios";
 
+function Item({ itemId }) {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
     const [quantity, setQuantity] = useState(1);
+    const [item, setItem] = useState({});
+
+
+    useEffect(() => {
+        const fetchItem = async () => {
+            const res = await axios.get(`/products/find/${itemId}`); 
+            setItem(res.data);
+        }
+        fetchItem();
+    }, []);
 
     return (
         <Row>
-            <img src={item.image} />
+            <img src={`${PF}/data/${item.image}`} />
             <h3>{item.name}</h3>
             <p>{item?.price && `${item?.price.toFixed(2)}€ / ${item.weight}`}</p>
             <ButtonsWrapper className="ghost">

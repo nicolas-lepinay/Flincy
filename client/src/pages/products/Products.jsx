@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Link } from "react-router-dom";
-import { Background, ToggleSwitch, Input, Slider, Title, ItemsWrapper, Item } from "./Products.styled";
+import React, { useState, useEffect } from 'react';
+import { useParams, useLocation } from "react-router-dom";
+import { Background, ContentContainer, Title, LineWrapper, Clickable } from "./Products.styled";
 
 // Corps de page ;
 import PageContainer from "../../components/pageContainer/PageContainer";
@@ -8,79 +8,72 @@ import PageContainer from "../../components/pageContainer/PageContainer";
 import Header from "../../components/header/Header";
 // Barre de recherche :
 import SearchBar from "../../components/searchbar/SearchBar";
-// DummyData :
-import { ingredients, recipes } from "../../dummyData";
+// Carousel "Nos derniers ingrédients" :
+import RecipeCarousel from "../../components/recipeCarousel/RecipeCarousel.jsx";
+// "Nos recommandations" et "Tous nos ingrédients" :
+import LatestItems from "../../components/latestItems/LatestItems.jsx";
 
-function Products() {
+import axios from "axios";
 
-    const [checked, setChecked] = useState(false);
+function Products() {    
+    const { categoryId } = useParams();
+    const [category, setCategory] = useState({});
+    const [products, setProducts] = useState([]);
 
-    const TitleLeft = useRef(null);
-    const TitleRight = useRef(null);
+    const location = useLocation().pathname.split("/")[1]; // 'ingredients' ou 'recipes'
 
-    const handleCheck = () => {
-        setChecked(!checked);
-    }
+    const ingredientSetting = {
+        dragSpeed: 1.25,
+        itemWidth: 120,
+        itemHeight: 200,
+        itemSideOffsets: 10
+      };
+    
+    const ingredientItemStyle = {
+        width: `${ingredientSetting.itemWidth}px`,
+        height: `${ingredientSetting.itemHeight}px`,
+        margin: `0 ${ingredientSetting.itemSideOffsets}px`
+      };
 
-    useEffect ( () => {
-        if(checked) {
-            TitleLeft.current.style.color = "rgba(40, 40, 40)";
-            TitleRight.current.style.color = "white";
+    useEffect(() => {
+        const fetchCategory = async () => {
+            const res = await axios.get(`/categories/find/${categoryId}`); 
+            setCategory(res.data);
         }
-        else {
-            TitleLeft.current.style.color = "white";
-            TitleRight.current.style.color = "rgba(40, 40, 40)";
+        const fetchProducts = async () => {
+            const res = await axios.get(`/products/find?category=${categoryId}`); 
+            setProducts(res.data);
         }
-    }, [checked])
-
-    const Ingredients = () => {
-        return (
-            <ItemsWrapper>
-                {ingredients.map( (item, i) => (
-                    <Item key={i}>
-                        <Link to={`/ingredients/${item._id}`} style={{textDecoration: "none", color: "inherit"}}>
-                            {item.name}
-                        </Link>
-                    </Item>
-                ))}
-            </ItemsWrapper>
-        )
-    }
-
-    const Recipes = () => {
-        return (
-            <ItemsWrapper>
-                {recipes.map( (item, i) => (
-                    <Item key={i}>
-                        <Link to={`/recipes/${item._id}`} style={{textDecoration: "none", color: "inherit"}}>
-                            {item.name}
-                        </Link>
-                    </Item>                
-                ))}
-            </ItemsWrapper>
-        )
-    }
+        fetchCategory();
+        fetchProducts();
+    }, [categoryId])
 
 
     return (
         <>
-            <Header>Menu</Header>
+            <Header>{category.name}</Header>
             <PageContainer>
                 <Background>
-
-                    <div>
-                        <ToggleSwitch>
-                            <Input type="checkbox" onChange={handleCheck}/>
-                            <Slider className="slider"/>
-                            <Title ref={TitleLeft} className="left">Ingrédients</Title>
-                            <Title ref={TitleRight} className="right">Recettes</Title>
-                        </ToggleSwitch>
-                    </div>
-
                     <SearchBar/>
-
                 </Background>
-                    {checked ? <Recipes/> : <Ingredients/>}
+
+                <ContentContainer>
+                    <Title>{location === "ingredients" ? 'Nos derniers ingrédients' : 'Nos dernières recettes'}</Title>
+                    <RecipeCarousel 
+                        data={products} 
+                        setting={ingredientSetting} 
+                        itemStyle={ingredientItemStyle}
+                    />
+                    <Title style={{marginTop:"-40px"}}>Nos recommandations</Title>
+                    <LatestItems data={products} />
+                    <LineWrapper>
+                        <Title>{location === "ingredients" ? 'Tous nos ingrédients' : 'Toutes nos recettes'}</Title>
+                        <Clickable>Filtrer</Clickable>
+                    </LineWrapper>
+                    <LatestItems data={products} />
+                    <Clickable className="right">Voir plus</Clickable>
+                </ContentContainer>
+
             </PageContainer> 
         </>
     )

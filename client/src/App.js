@@ -5,9 +5,10 @@ import Signin from './pages/signin/Signin';
 import Signup from './pages/signup/Signup';
 import Welcome from './pages/welcome/Welcome';
 import Home from './pages/home/Home';
+import Categories from './pages/categories/Categories';
+// import Ingredients from './pages/categories/ingredients/Ingredients';
+// import Recipes from './pages/categories/recipes/Recipes';
 import Products from './pages/products/Products';
-import Ingredients from './pages/products/ingredients/Ingredients';
-import Recipes from './pages/products/recipes/Recipes';
 import Article from './pages/article/Article';
 import Cart from './pages/cart/Cart';
 import Profile from './pages/profile/Profile';
@@ -20,10 +21,13 @@ import RedirectToNotFound from "./components/redirectToNotFound/RedirectToNotFou
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 function App() {
+
+  const user = true;
 
   const DefaultRoutes = () => {
     return (
@@ -31,12 +35,12 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/home" component={Home} />
-          <Route path="/products" component={Products} />
+          <Route path="/products" component={Categories} />
           <Route path="/cart/" component={Cart} />
           <Route path="/shipping" component={Shipping} />
 
-          <Route path="/ingredients/:categoryId" component={Ingredients} />
-          <Route path="/recipes/:categoryId" component={Recipes} />
+          <Route path="/ingredients/:categoryId" component={Products} />
+          <Route path="/recipes/:categoryId" component={Products} />
           <Route path="/article/:articleId" component={Article} />
 
           <Route path="/profile" component={Profile} />
@@ -52,11 +56,16 @@ function App() {
         <Switch>
             {/*Toujours ajouter 'exact' pour la racine ! */}
             <Route exact path="/" component={Landing} />
-            <Route path="/sign-in" component={Signin} />
-            <Route path="/sign-up" component={Signup} />
-            <Route path="/welcome" component={Welcome} />
-            <Route path="/test" component={ToggleHeart} />
 
+            <Route path="/sign-in">
+              {user ? <Redirect to="/home" /> : <Signin/>}
+            </Route>
+
+            <Route path="/sign-up">
+              {user ? <Redirect to="/home" /> : <Signup/>}
+            </Route>
+
+            <Route path="/welcome" component={Welcome} />
             {/* <Route path="/not-found" component={My404Page} /> */}
             <Route component={DefaultRoutes} />
         </Switch>

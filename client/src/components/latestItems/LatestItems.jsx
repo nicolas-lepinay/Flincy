@@ -5,7 +5,7 @@ import StarSVG from "../../components/SVG/StarSVG";
 import { theme } from "../../theme/Theme";
 
 function LatestItems({ data }) {
-
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
     const history = useHistory();
     
     return (
@@ -13,7 +13,7 @@ function LatestItems({ data }) {
         { data.map( (item, i) => (
             <div key={i}>
                 <Wrapper>
-                    <Image src={item.image} onClick={() => history.push(`/article/${item._id}`)}/>
+                    <Image src={`${PF}/data/${item.image}`} onClick={() => history.push(`/article/${item._id}`)}/>
                     <GridLayout>
                         <Name>{item.name}</Name>
                         {item.price && <Price>{item.price.toFixed(2)}€</Price>}

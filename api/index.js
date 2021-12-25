@@ -27,7 +27,7 @@ app.use("/api/cart", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 
-const port = 8000;
+const port = 9000;
 app.listen(port, () => {
     console.log("Démarrage du serveur.")
 })

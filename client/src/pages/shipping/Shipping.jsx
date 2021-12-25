@@ -56,7 +56,7 @@ function Shipping() {
     useEffect( () => {
         const makeRequest = async () => {
             try {
-                const res = await axios.post('http://localhost:8000/api/checkout/payment', {
+                const res = await axios.post('http://localhost:9000/api/checkout/payment', {
                     tokenId: stripeToken.id,
                     amount: 2000,
                 })

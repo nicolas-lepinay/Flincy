@@ -11,19 +11,15 @@ const ProductSchema = new mongoose.Schema({
     },
     country:{
         type: String,
-        required: true,
     },
     price:{
         type: Number,
-        required: true,
     },
     weight:{
         type: String,
-        required: true,
     },
     shop:{
         type: String,
-        required: true,
     },
     description:{
         type: String,
@@ -37,6 +33,10 @@ const ProductSchema = new mongoose.Schema({
     categories:{
         type: Array,
         required: true,
+    },
+    ingredients:{
+        type: Array,
+        default: [],
     },
 }, {timestamps: true});
 

@@ -7,7 +7,7 @@ import Header from "../../components/header/Header";
 // Barre de recherche :
 import SearchBar from "../../components/searchbar/SearchBar";
 // Les paniers :
-import BasketCarousel from "../../components/basketCarousel/BasketCarousel";
+import PanierCarousel from "../../components/panierCarousel/PanierCarousel";
 // Les derniers articles :
 import LatestItems from "../../components/latestItems/LatestItems";
 // Les recettes :
@@ -34,7 +34,7 @@ function Home() {
                 </Background>
 
                 <Title>Paniers à composer</Title>
-                <BasketCarousel/>
+                <PanierCarousel/>
 
                 <ContentContainer>
 

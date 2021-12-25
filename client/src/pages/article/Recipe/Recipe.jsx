@@ -18,6 +18,7 @@ import { AnimatePresence } from 'framer-motion';
 import Item from "../../../components/item/Item"
 
 function Recipe({ article }) {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
 
     const [stars, setStars] = useState([]);
     const [quantity, setQuantity] = useState(1);
@@ -54,7 +55,7 @@ function Recipe({ article }) {
     return (
         <>
         <PageContainer blank>
-            <ImageContainer source={article.image}>
+            <ImageContainer source={`${PF}/data/${article.image}`}>
                 <ArrowBackIosRounded onClick={history.goBack} style={MATERIAL_STYLE.ARROW}/>
             </ImageContainer>
 
@@ -72,7 +73,7 @@ function Recipe({ article }) {
                             </StarsWrapper>
                         </Ratings>
                         <Feedback>{article.rating} étoiles ({article.feedback} avis)</Feedback>
-                        <Price>{article.price && `${article.price.toFixed(2)}€`}</Price>
+                        <Price>{article?.price && `${article.price.toFixed(2)}€`}</Price>
                         <Weight>{article?.weight}</Weight>
                     </GridLayout>
                     <Shop>Vendu par {article?.shop}</Shop>
@@ -80,8 +81,8 @@ function Recipe({ article }) {
                     <List>
                         <Separator></Separator>
                         <h3>Les ingrédients</h3>
-                        {article.ingredients.map( (item) => (
-                            <Item item={item}/>
+                        {article.ingredients.map( (itemId) => (
+                            <Item itemId={itemId}/>
                         ))}
                     </List>
                 </Wrapper>

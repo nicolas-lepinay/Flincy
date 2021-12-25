@@ -6,15 +6,15 @@ import StarSVG from "../../components/SVG/StarSVG";
 
 import { theme } from "../../theme/Theme";
 
-function RecipeCarousel({ categoryId, data, setting, itemStyle }) {
-
+function RecipeCarousel({ data, setting, itemStyle }) {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
     const history = useHistory();
 
     return (
         <Carousel _data={data} {...setting}>
         { data.map((item, i) => (
             <div key={i} className='item' style={{ ...itemStyle }}>
-                <Image src={item.image} onClick={() => history.push(`/article/${item._id}`)}/>
+                <Image src={`${PF}/data/${item.image}`} onClick={() => history.push(`/article/${item._id}`)}/>
                 <Title>{item.name}</Title>
                 <Category>{item?.category || item?.country}</Category>
                 <LineWrapper>
