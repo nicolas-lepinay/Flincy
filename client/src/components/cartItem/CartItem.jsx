@@ -8,14 +8,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
 function CartItem( {article} ) {
-
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
     const [quantity, setQuantity] = useState(article.quantity);
     const history = useHistory();
 
     return (
         <div>
             <Panel>
-                <Image src={article.image} onClick={() => history.push(`/article/${article._id}`)}/>
+                <Image src={`${PF}/data/${article.image}`} onClick={() => history.push(`/article/${article._id}`)}/>
                 <Name>
                     <span>{article.name}</span>
                     <FontAwesomeIcon icon={faTrashAlt} style={MATERIAL_STYLE} />

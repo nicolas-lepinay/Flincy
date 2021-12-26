@@ -64,3 +64,16 @@ export const ButtonsWrapper = styled.div`
     }
 }
 `
+
+export const Button = styled.button`
+    grid-area: button;
+    background-color: ${theme.btnColor};
+    border-radius: 3rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0px;
+    padding: 5px 20px 7px 20px;
+`

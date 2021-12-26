@@ -11,11 +11,17 @@ import { theme } from "../../../theme/Theme";
 import { useHistory } from "react-router-dom";
 
 // Modal addToCart :
-import AddToCart from "../../../modals/addToCart/AddToCart"
+import AddToCart from "../../../modals/addToCart/AddToCart";
 import { AnimatePresence } from 'framer-motion';
 
 // Item component :
 import Item from "../../../components/item/Item"
+
+// Redux :
+import { addProduct } from "../../../redux/cartRedux";
+import { useDispatch } from "react-redux";
+
+import axios from "axios";
 
 function Recipe({ article }) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
@@ -23,7 +29,7 @@ function Recipe({ article }) {
     const [stars, setStars] = useState([]);
     const [quantity, setQuantity] = useState(1);
     const [isOpen, setIsOpen] = useState(false);
-
+    const dispatch = useDispatch();
     const history = useHistory();
 
     // Affichage du nombre d'étoiles selon la note :
@@ -52,6 +58,17 @@ function Recipe({ article }) {
         document.getElementById('root').style.filter = 'blur(0px)';
     }
 
+    const addRecipeToCart = () => {
+        const fetchAll = () => {
+            article.ingredients.forEach( async (id) => {
+                const res = await axios.get(`/products/find/${id}`); 
+                dispatch(addProduct({ ...res.data, quantity:1 }));
+            });
+        }
+        fetchAll();
+        openModal();
+    }
+
     return (
         <>
         <PageContainer blank>
@@ -76,13 +93,13 @@ function Recipe({ article }) {
                         <Price>{article?.price && `${article.price.toFixed(2)}€`}</Price>
                         <Weight>{article?.weight}</Weight>
                     </GridLayout>
-                    <Shop>Vendu par {article?.shop}</Shop>
+                    <Shop>{article?.shop && `Vendu par ${article?.shop}`}</Shop>
                     <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.</Description>
                     <List>
                         <Separator></Separator>
                         <h3>Les ingrédients</h3>
-                        {article.ingredients.map( (itemId) => (
-                            <Item itemId={itemId}/>
+                        {article.ingredients.map( (itemId, i) => (
+                            <Item key={i} itemId={itemId}/>
                         ))}
                     </List>
                 </Wrapper>
@@ -92,8 +109,7 @@ function Recipe({ article }) {
                         <h3>Total</h3>
                         <h3>XX.XX€</h3>
                     </LineWrapper>
-
-                    <AddButton onClick={openModal}>Ajouter au panier</AddButton>
+                    <AddButton onClick={addRecipeToCart}>Ajouter tous les ingrédients au panier</AddButton>
 
                 </CartContainer>
             </ContentContainer>
@@ -103,11 +119,9 @@ function Recipe({ article }) {
         <AnimatePresence 
             initial={false} 
             exitBeforeEnter={true} 
-            onExitComplete={() => null}
-        >
-            {isOpen && <AddToCart handleClose={closeModal} product={{...article, quantity}}/>}
+            onExitComplete={() => null}>
+            {isOpen && <AddToCart handleClose={closeModal} product={{...article, quantity }}/>}
         </AnimatePresence>
-
     </>
     )
 }

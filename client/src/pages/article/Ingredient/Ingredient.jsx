@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams} from "react-router-dom";
 
-import { latestIngredients, recipeItems, latestItems, basketItems, recommandations, allIngredients, latestRecipes, recommandationsRecipes, allRecipes, recipeIngredients } from "../../../dummyData";
+// Redux :
+import { addProduct } from "../../../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 // Corps de page :
 import PageContainer from "../../../components/pageContainer/PageContainer";
@@ -17,13 +18,14 @@ import { useHistory } from "react-router-dom";
 import AddToCart from "../../../modals/addToCart/AddToCart"
 import { AnimatePresence } from 'framer-motion';
 
+
 function Ingredient({ article }) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
     
     const [stars, setStars] = useState([]);
     const [quantity, setQuantity] = useState(1);
     const [isOpen, setIsOpen] = useState(false);
-
+    const dispatch = useDispatch();
     const history = useHistory();
 
     // Affichage du nombre d'étoiles selon la note :
@@ -37,7 +39,7 @@ function Ingredient({ article }) {
             arr.push(<StarSVG key={j} fill={'none'}/>)
         }
         setStars(arr);
-    });
+    }, [article._id]);
 
     const openModal = () => {
         setIsOpen(true);
@@ -48,6 +50,11 @@ function Ingredient({ article }) {
     const closeModal = () => {
         setIsOpen(false);
         document.getElementById('root').style.filter = 'blur(0px)';
+    }
+
+    const addToCart = () => {
+        dispatch(addProduct({ ...article, quantity }));
+        openModal();
     }
 
     return (
@@ -88,7 +95,7 @@ function Ingredient({ article }) {
                         </ButtonsWrapper>
                     </LineWrapper>
 
-                    <AddButton onClick={openModal}>Ajouter au panier</AddButton>
+                    <AddButton onClick={addToCart}>Ajouter au panier</AddButton>
 
                 </CartContainer>
             </ContentContainer>

@@ -173,7 +173,7 @@ export const LineWrapper = styled.div`
     z-index: 10;
     &>h3{
         color: white;
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: 700;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -225,7 +225,8 @@ export const AddButton = styled.button`
     letter-spacing: 1px;
     right: 0;
     margin: 0 auto;
-    padding: 15px 60px;
+    max-width: 270px;
+    padding: 15px 40px;
     text-transform: uppercase;
     z-index: 10;
     transition: all 0.2s ease-in-out;

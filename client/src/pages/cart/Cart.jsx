@@ -1,17 +1,19 @@
 import React, { useState, useLayoutEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import Header from "../../components/header/Header.jsx"
 import PageContainer from "../../components/pageContainer/PageContainer";
 import CartItem from "../../components/cartItem/CartItem.jsx"
 import { Content, Checkout, Row, Button, Bubble, Container } from "./Cart.styled";
-import { useHistory } from "react-router-dom";
-import { cart } from "../../dummyData";
+import { cart as myCart } from "../../dummyData";
  
 function Cart() {
-
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
     const history = useHistory();
+    const cart = useSelector(state => state.cart);
 
     const EmptyCart = () => {
-        const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
 
         return (
             <>
@@ -36,24 +38,24 @@ function Cart() {
 
         useLayoutEffect( () => {
             let sum = 0;
-            cart.map( (item) => (
+            myCart.map( (item) => (
                 sum += (item.price * item.quantity)
             ));
             setTotal(sum);
-        }, [cart])
+        }, [myCart])
 
         return (
             <>
                 <Header>Panier</Header>
                 <PageContainer>
                     <Content>
-                        {cart.map( (item, i) => 
+                        {cart.products.map( (item, i) => 
                             <CartItem key={i} article={item}/>
                         )}
                         <Checkout>
                             <Row>
                                 <h3>Prix total</h3>
-                                <h1>{total.toFixed(2)}€</h1>
+                                <h1>{cart.total.toFixed(2)}€</h1>
                             </Row>
                             <hr/>
                             <Row>
@@ -64,9 +66,9 @@ function Cart() {
                     </Content>
                 </PageContainer> 
                 <Bubble>
-                    {cart.map( (item, i) =>
+                    {cart.products.map( (item, i) =>
                         i < 7 && 
-                        <img key={`img-${i}`} src={item.image}/>
+                        <img key={`img-${i}`} src={`${PF}/data/${item.image}`}/>
                     )}                        
                 </Bubble>
             </>
@@ -75,7 +77,7 @@ function Cart() {
 
     return (
         <>
-            {cart.length > 0 ? <FullCart/> : <EmptyCart/>}
+            {cart.quantity > 0 ? <FullCart/> : <EmptyCart/>}
         </>
     )
 }

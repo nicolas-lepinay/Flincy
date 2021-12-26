@@ -43,6 +43,9 @@ const UserSchema = new mongoose.Schema({
     favorites:{
         type: Array,
         default: [],
+    },
+    avatar:{
+        type: String,
     }
 }, {timestamps: true});
 

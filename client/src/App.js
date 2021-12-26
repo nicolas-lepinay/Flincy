@@ -6,8 +6,6 @@ import Signup from './pages/signup/Signup';
 import Welcome from './pages/welcome/Welcome';
 import Home from './pages/home/Home';
 import Categories from './pages/categories/Categories';
-// import Ingredients from './pages/categories/ingredients/Ingredients';
-// import Recipes from './pages/categories/recipes/Recipes';
 import Products from './pages/products/Products';
 import Article from './pages/article/Article';
 import Cart from './pages/cart/Cart';
@@ -15,7 +13,6 @@ import Profile from './pages/profile/Profile';
 import About from './pages/about/About';
 import Shipping from './pages/shipping/Shipping';
 
-import ToggleHeart from './components/toggleHeart/ToggleHeart';
 import RedirectToNotFound from "./components/redirectToNotFound/RedirectToNotFound";
 
 import {
@@ -34,17 +31,15 @@ function App() {
       <>
         <Navbar />
         <Switch>
-          <Route path="/home" component={Home} />
-          <Route path="/products" component={Categories} />
-          <Route path="/cart/" component={Cart} />
-          <Route path="/shipping" component={Shipping} />
-
-          <Route path="/ingredients/:categoryId" component={Products} />
-          <Route path="/recipes/:categoryId" component={Products} />
-          <Route path="/article/:articleId" component={Article} />
-
-          <Route path="/profile" component={Profile} />
-          <Route path="/about" component={About} />
+            <Route path="/home" component={Home} />
+            <Route path="/products" component={Categories} />
+            <Route path="/cart/" component={Cart} />
+            <Route path="/shipping" component={Shipping} />
+            <Route path="/ingredients/:categoryId" component={Products} />
+            <Route path="/article/:articleId" component={Article} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/about" component={About} />
+            <Route path="/recipes/:categoryId" component={Products} />
           {/* <Route component={RedirectToNotFound} /> */}
         </Switch>
       </>
