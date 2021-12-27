@@ -98,7 +98,7 @@ export const Input = styled.input`
     box-shadow: ${theme.boxShadow6};
     font-family: 'Poppins', sans-serif;
     margin-top: 25px;
-    padding: 1rem 4.2rem;
+    padding: 1rem 1.8rem 1rem 4.2rem;
     width: 300px;
     &:focus {
         outline: none;
@@ -108,6 +108,26 @@ export const Input = styled.input`
         font-family: 'Poppins', sans-serif;
         opacity: 0.5;
         text-shadow: none;
+    }
+    &.firstName {
+        padding: 1rem 1rem 1rem 4.2rem;
+        width: 145px;
+    }
+    &.lastName {
+        padding: 1rem 1rem 1rem 4.2rem;
+        width: 145px;
+    }
+    &.address {
+        padding: 1rem 3.8rem 1rem 4.2rem;
+    }
+    &.city {
+        padding: 1rem 1rem 1rem 4rem;
+        width: 160px;
+    }
+    &.zipcode {
+        padding: 1rem 1.2rem;
+        text-align: center;
+        width: 120px;
     }
 `
 
@@ -121,6 +141,13 @@ export const LineWrapper = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     margin: 20px 0;
+`
+
+export const Row = styled.div`
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `
 
 export const Button = styled.button`

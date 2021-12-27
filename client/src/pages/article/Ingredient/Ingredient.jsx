@@ -53,7 +53,7 @@ function Ingredient({ article }) {
     }
 
     const addToCart = () => {
-        dispatch(addProduct({ ...article, quantity }));
+        dispatch(addProduct({ ...article, quantity:quantity }));
         openModal();
     }
 

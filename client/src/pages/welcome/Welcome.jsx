@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Background, Wrapper, Container, Slide, Subtitle, Title, Text, DotsWrapper, ButtonsWrapper, Button, ButtonLink } from "./Welcome.styled";
 import { FiberManualRecord } from '@material-ui/icons';
@@ -25,8 +27,7 @@ const slides = [
 export default function Welcome() {
 
     const [index, setIndex] = useState(0);
-
-    // const prevButton = useRef();
+    const history = useHistory();
 
     const next = () => {
         index === (slides.length - 1) ? setIndex(0) : setIndex(index + 1)
@@ -63,7 +64,7 @@ export default function Welcome() {
                         
                         {index < (slides.length - 1) 
                         ? <Button onClick={next}>Suivant</Button>
-                        : <ButtonLink href="/home">Entrer</ButtonLink>}
+                        : <Button onClick={() => history.push(`/home`)}>Entrer</Button>}
                     </ButtonsWrapper>
                 </Container>
             </Wrapper>

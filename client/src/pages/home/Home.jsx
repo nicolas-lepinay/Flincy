@@ -45,10 +45,10 @@ function Home() {
                     <PopularImage src={`${PF}/data/watermelon.webp`} /> 
 
                     <Title>Derniers articles en ligne</Title>
-                    <LatestItems data={latestItems} />
+                    <LatestItems />
 
                     <Title>Recettes</Title>
-                    <RecipeCarousel data={recipeItems} setting={recipeSetting} itemStyle={recipeItemStyle}/>
+                    <RecipeCarousel/>
                 </ContentContainer>
             </PageContainer> 
         </>

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDom from 'react-dom';
 import { Link, useHistory } from "react-router-dom";
 import { motion } from 'framer-motion';
 import { Backdrop, Container, Wrapper, Button } from "./Success.styled";
+
+import axios from 'axios';
 
 function Success({ handleClose }) {
 

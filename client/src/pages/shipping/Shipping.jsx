@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from "react-redux";
 import { FONTAWESOME_STYLE, Background, Heading, Hours, Container, Title, Circle, CardInfo, Row, Button } from "./Shipping.styled";
 // Corps de page ;
 import PageContainer from "../../components/pageContainer/PageContainer";
@@ -26,12 +27,14 @@ import StripeCheckout from 'react-stripe-checkout';
 
 function Shipping() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
-    const KEY = "pk_test_51K9uyuJN6UJMK9bX8jrSOB4ZcPGBGd6vAs4Xl0r7QK27DkoIhmc2ZmOHxGC4NCH2TAfbiajp9T5NHnz6S69UpL4a00FcgREvXI"
+    const KEY = process.env.REACT_APP_STRIPE; // Stripe public key
     
     const [hour, setHour] = useState('');
     const [payment, setPayment] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const [stripeToken, setStripeToken] = useState({});
+    const [stripeToken, setStripeToken] = useState(null);
+    const [stripeData, setStripeData] = useState(null);
+    const cart = useSelector(state => state.cart);
     
     const style = {
         margin: "40px 0 20px 0"
@@ -53,20 +56,36 @@ function Shipping() {
         openModal();
     }
 
+    const createOrder = async (stripeData, cart) => {
+        try {
+            const res = await axios.post('/orders', {
+                userId: "SOME USER ID",
+                products: cart.products.map( (item) => ({
+                    productId: item._id,
+                    quantity: item.quantity,
+                })),
+                amount: cart.total.toFixed(2),
+                address: stripeData.billing_details.address,
+            })
+        } catch(err) {
+            console.error(err);
+        }
+    }
+
     useEffect( () => {
         const makeRequest = async () => {
             try {
-                const res = await axios.post('http://localhost:9000/api/checkout/payment', {
+                const res = await axios.post('/checkout/payment', {
                     tokenId: stripeToken.id,
-                    amount: 2000,
-                })
-                console.log(res.data)
+                    amount: cart.total * 100,
+                });
+                createOrder(res.data, cart);
             } catch(err) {
                 console.log(err)
             }
         }
-        Object.keys(stripeToken).length != 0 && makeRequest();
-    }, [stripeToken])
+        stripeToken && makeRequest();
+    }, [stripeToken, cart.total])
 
     return (
         <>
@@ -168,30 +187,30 @@ function Shipping() {
 
                     <Row>
                         <p>Prix de la commande</p>
-                        <p>34.50€</p>
+                        <p>{cart.total.toFixed(2)}€</p>
                     </Row>
 
                     <Row>
                         <p>Livraison</p>
-                        <p>4.20€</p>
+                        <p>0.00€</p>
                     </Row>
 
                     <Row className="total">
                         <p>Total</p>
-                        <p>38.70€</p>
+                        <p>{cart.total.toFixed(2)}€</p>
                     </Row>
                 </Container>
 
                 <Container className="final">
                     <Row>
-                        <h2>38.70€</h2>
+                        <h2>{cart.total.toFixed(2)}€</h2>
                         <StripeCheckout
                             name="Flincy"
                             image={`${PF}/ui/F_logo.png`}
                             billingAddress
                             shippingAddress
-                            description= "Le total de la commande est de 20.00€."
-                            amount={2000}
+                            description= {`Le montant à payer est de ${cart.total.toFixed(2)}€.`}
+                            amount={cart.total * 100}
                             token={onToken}
                             stripeKey={KEY}
                         >

@@ -89,7 +89,7 @@ export const Input = styled.input`
     box-shadow: ${theme.boxShadow6};
     font-family: 'Poppins', sans-serif;
     margin-top: 25px;
-    padding: 1rem 4.2rem;
+    padding: 1rem 2rem 1rem 4.2rem;
     width: 300px;
     &:focus {
         outline: none;
@@ -135,6 +135,13 @@ export const Button = styled.button`
     &:hover {
         border: 2px solid white;
     }
+    &:disabled {
+        opacity: 0.4;
+        cursor: default;
+        &:hover {
+            border: 2px solid white;
+        }
+    }
 `
 
 export const Checkbox = styled.input`
@@ -159,4 +166,11 @@ export const Icon = styled.img`
     margin: 5px 10px 150px 10px;
     padding:15px;
     width: 25px;
+`
+
+export const Error = styled.span`
+    color: red;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
 `
