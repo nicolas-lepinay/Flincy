@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from "../../redux/userRedux";
 
 // Top section :
 import { Background, ToggleSwitch, Checkbox, Slider, Title, Form, InputWrapper, Input, Button } from "./Profile.styled";
@@ -22,6 +23,7 @@ function Profile() {
     
     const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
     const user = useSelector(state => state.user.currentUser);
+    const dispatch = useDispatch();
 
     const [checked, setChecked] = useState(false);
 
@@ -70,6 +72,10 @@ function Profile() {
             };
         }
 
+        const signout = () => {
+            dispatch(logout());
+        }
+
         useEffect ( () => {
             firstName.current.value = user.firstName;
             lastName.current.value = user.lastName;
@@ -88,7 +94,7 @@ function Profile() {
                 <h1>Bienvenue, {user.firstName}</h1>
                 <Row>
                     <PowerSettingsNew style={MATERIAL_STYLE.LOGOFF}/>
-                    <h4>Déconnexion</h4>
+                    <h4 onClick={signout}>Déconnexion</h4>
                 </Row>
 
                 <Form>
