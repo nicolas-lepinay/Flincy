@@ -131,6 +131,9 @@ export const Picture = styled.img`
 export const Row = styled.div`
     align-items: center;
     display: flex;
+    &.space-between {
+        justify-content: space-between;
+    }
 `
 
 export const Form = styled.form`
@@ -155,6 +158,19 @@ export const Input = styled.input`
         font-family: 'Poppins', sans-serif;
         opacity: 0.5;
         text-shadow: none;
+    }
+    &.small {
+        padding: 0.9rem 1rem 0.9rem 3.5rem;
+        width: 145px;
+    }
+    &.city {
+        padding: 1rem 1rem 1rem 4rem;
+        width: 165px;
+    }
+    &.zipcode {
+        padding: 1rem 1.2rem;
+        text-align: center;
+        width: 125px;
     }
 `
 
@@ -184,5 +200,9 @@ export const Button = styled.button`
     }
     &:hover {
         border: 2px solid white;
+    }
+    &:disabled{
+        cursor: default;
+        opacity: 0.4;
     }
 `

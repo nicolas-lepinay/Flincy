@@ -33,6 +33,9 @@ const UserSchema = new mongoose.Schema({
     zipcode:{
         type: Number,
     },
+    city:{
+        type: String,
+    },
     country:{
         type: String,
     },

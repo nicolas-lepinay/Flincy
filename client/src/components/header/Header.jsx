@@ -22,7 +22,7 @@ function Header(props) {
 
                 <LineWrapper2>
                     <LocationSVG fill={theme.primaryColor} style={SVG_STYLE.LOCATION} />
-                    <Subtitle>{ user.city } ({ user.departement })</Subtitle>
+                    <Subtitle>{ user.city } ({ user.zipcode.toString().substring(0, 2) })</Subtitle>
                     <CheckSVG fill={theme.primaryColor} style={SVG_STYLE.LOCATION} />
                 </LineWrapper2>
             </Container>

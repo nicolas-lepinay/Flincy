@@ -15,7 +15,9 @@ router.post('/register', async (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             mobile: req.body.mobile,
-            address_home: req.body.address,
+            address_home: req.body.address_home,
+            city: req.body.city,
+            zipcode: req.body.zipcode,
             password: hashedPassword,
         })
         // Sauvegarde de l'utilisateur dans la base de données :

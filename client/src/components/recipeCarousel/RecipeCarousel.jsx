@@ -6,9 +6,9 @@ import StarSVG from "../../components/SVG/StarSVG";
 import { theme } from "../../theme/Theme";
 import axios from "axios";
 
-function RecipeCarousel() {
+function RecipeCarousel({ data }) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
     const history = useHistory();
 
     const setting = {
@@ -24,14 +24,14 @@ function RecipeCarousel() {
         margin: `0 ${setting.itemSideOffsets}px`
     };
 
-    useEffect ( () => {
-        const fetchLatestItems = async () => {
-            const categoryId = "61c49de1f045c90960534944"; // ID de la catégorie 'Recettes'
-            const res = await axios.get(`/products/find?category=${categoryId}`); 
-            setData(res.data.sort( (p1, p2) => { return new Date(p2.createdAt) - new Date(p1.createdAt) })); // Tri du plus récent au plus ancien
-        }
-        fetchLatestItems();
-    }, []);
+    // useEffect ( () => {
+    //     const fetchLatestItems = async () => {
+    //         const categoryId = "61c49de1f045c90960534944"; // ID de la catégorie 'Recettes'
+    //         const res = await axios.get(`/products/find?category=${categoryId}`); 
+    //         setData(res.data.sort( (p1, p2) => { return new Date(p2.createdAt) - new Date(p1.createdAt) })); // Tri du plus récent au plus ancien
+    //     }
+    //     fetchLatestItems();
+    // }, []);
 
     return (
         <Carousel _data={data} {...setting}>

@@ -12,8 +12,6 @@ import SearchBar from "../../components/searchbar/SearchBar";
 import Success from "../../modals/success/Success.jsx";
 import { AnimatePresence } from 'framer-motion';
 
-import { user } from "../../dummyData"
-
 // Axios :
 import axios from 'axios';
 
@@ -24,7 +22,6 @@ import { faEdit } from "@fortawesome/free-regular-svg-icons";
 // Stripe Checkout :
 import StripeCheckout from 'react-stripe-checkout';
 
-
 function Shipping() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER; // Public folder
     const KEY = process.env.REACT_APP_STRIPE; // Stripe public key
@@ -34,7 +31,9 @@ function Shipping() {
     const [isOpen, setIsOpen] = useState(false);
     const [stripeToken, setStripeToken] = useState(null);
     const [stripeData, setStripeData] = useState(null);
+
     const cart = useSelector(state => state.cart);
+    const user = useSelector(state => state.user.currentUser);
     
     const style = {
         margin: "40px 0 20px 0"
@@ -59,7 +58,7 @@ function Shipping() {
     const createOrder = async (stripeData, cart) => {
         try {
             const res = await axios.post('/orders', {
-                userId: "SOME USER ID",
+                userId: user._id,
                 products: cart.products.map( (item) => ({
                     productId: item._id,
                     quantity: item.quantity,
