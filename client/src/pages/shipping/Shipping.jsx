@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from "react-redux";
+
+// Redux :
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../../redux/cartRedux";
+
 import { FONTAWESOME_STYLE, Background, Heading, Hours, Container, Title, Circle, CardInfo, Row, Button } from "./Shipping.styled";
 // Corps de page ;
 import PageContainer from "../../components/pageContainer/PageContainer";
@@ -34,6 +38,7 @@ function Shipping() {
 
     const cart = useSelector(state => state.cart);
     const user = useSelector(state => state.user.currentUser);
+    const dispatch = useDispatch();
     
     const style = {
         margin: "40px 0 20px 0"
@@ -79,6 +84,7 @@ function Shipping() {
                     amount: cart.total * 100,
                 });
                 createOrder(res.data, cart);
+                dispatch(clearCart());
             } catch(err) {
                 console.log(err)
             }
