@@ -14,13 +14,14 @@ export const Container = styled.div`
     width: 90%;
     &>.date {
         font-size: 0.9rem;
-        margin: 20px 0;
+        font-weight: 600;
         text-align: center;
     }
     &>.number {
         color: ${theme.darkGrey};
-        font-size: 0.9rem;
-        font-weight: 600;
+        font-size: 0.7rem;
+        margin: 10px 0 20px 0;
+        text-align: center;
     }
     &>h4{
         font-size: 0.9rem;

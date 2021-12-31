@@ -800,7 +800,7 @@ export const cart = [
 export const orders = [
     {
         _id: "122",
-        createAt: "23/12/2021",
+        createdAt: "23/12/2021",
         items: [1001, 1002, 1003, 1004, 407, 405],
         itemsImg: [`${PF}/data/strawberries.webp`, `${PF}/data/sugar.webp`, `${PF}/data/eggs.webp`, `${PF}/data/butter.webp`, `${PF}/data/red-apples.webp`, `${PF}/data/lemons.webp`],
         price: "27.90",
@@ -808,7 +808,7 @@ export const orders = [
     },
     {
         _id: "123",
-        createAt: "27/12/2021",
+        createdAt: "27/12/2021",
         items: [1001, 1002, 1003, 1004, 407, 405],
         itemsImg: [`${PF}/data/strawberries.webp`, `${PF}/data/sugar.webp`, `${PF}/data/eggs.webp`, `${PF}/data/butter.webp`, `${PF}/data/red-apples.webp`, `${PF}/data/lemons.webp`],
         price: "18.30",

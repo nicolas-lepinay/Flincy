@@ -54,7 +54,9 @@ function App() {
     <Router>
         <Switch>
             {/*Toujours ajouter 'exact' pour la racine ! */}
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/">
+              <Landing/>
+            </Route>
 
             <Route path="/sign-in">
               {user ? <Redirect to="/welcome" /> : <Signin/>}

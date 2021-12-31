@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from "../../redux/userRedux";
 
 // Top section :
-import { Background, ToggleSwitch, Checkbox, Slider, Title, Form, InputWrapper, Input, Button } from "./Profile.styled";
+import { Background, ToggleSwitch, Checkbox, Slider, Title, Form, InputWrapper, Input, Button, OrderWrapper } from "./Profile.styled";
 
 // Info section :
 import { MATERIAL_STYLE, FlexContainer, Picture, Row } from "./Profile.styled";
@@ -15,9 +15,10 @@ import Header from "../../components/header/Header";
 // Orders :
 import OrderItem from "../../components/orderItem/OrderItem";
 
-import { orders } from "../../dummyData";
+// import { orders } from "../../dummyData";
 
 import { PowerSettingsNew, Person, Email, Phone, Home, BusinessCenter, LocationCity } from '@material-ui/icons';
+import axios from "axios";
 
 function Profile() {
     
@@ -148,12 +149,23 @@ function Profile() {
     }
 
     const Orders = () => {
+
+        const [orders, setOrders] = useState([]);
+
+        useEffect ( () => {
+            const fetchOrders = async () => {
+                const res = await axios.get(`/orders/find/${user._id}`); 
+                setOrders(res.data.sort( (p1, p2) => { return new Date(p2.createdAt) - new Date(p1.createdAt) })); // Tri du plus récent au plus ancien;
+            }
+            fetchOrders();
+        }, [user]);
+
         return (
-            <div>
+            <OrderWrapper>
                 {orders.map( (order, i) => 
-                    <OrderItem key={i} order={order}/>
+                        <OrderItem key={i} order={order}/>
                 )}
-            </div>
+            </OrderWrapper>
         )
     }
 

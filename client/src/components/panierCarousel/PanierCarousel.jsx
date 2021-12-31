@@ -38,7 +38,10 @@ function BasketCarousel() {
         <Carousel _data={paniers} {...panierSetting}>
         { paniers.map((item, i) => (
             <div key={i} className='item' style={{ ...panierItemStyle }}>
-                <Image src={`${PF}/data/${item.image}`} onClick={() => history.push(`/article/${item._id}`)} />
+                <Image 
+                    src={`${PF}/data/${item.image}`} 
+                    // onClick={() => history.push(`/article/${item._id}`)} 
+                    />
                 <Title>{item.name}</Title>
                 <LineWrapper>
                     <Icon>

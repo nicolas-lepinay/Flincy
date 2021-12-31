@@ -137,8 +137,8 @@ function Shipping() {
                     <FontAwesomeIcon icon={faEdit} style={FONTAWESOME_STYLE.EDIT} title="Modifier l'adresse"/>
                     <Title>Adresse de livraison</Title>
                     <p>{user.firstName} {user.lastName}</p>
-                    <p>{user.address}</p>
-                    <p>{user.zipcode}, {user.city}, {user.country}</p>
+                    <p>{user.address_home}</p>
+                    <p>{user.zipcode}, {user.city}</p>
                     <p>{user.phone}</p>
                 </Container>
 

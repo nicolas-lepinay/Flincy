@@ -206,3 +206,7 @@ export const Button = styled.button`
         opacity: 0.4;
     }
 `
+
+export const OrderWrapper = styled.div`
+    margin-bottom: 120px;
+`
