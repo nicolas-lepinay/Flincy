@@ -4,7 +4,7 @@
 Un prototype d'une application de livraison pour mobiles construite avec React, nodeJS, MongoDB et Stripe.
 Réalisé pour l'entreprise [Flincy](https://flincy.fr/).
 
-👉 **A quoi est-ce que ça ressemble ?**:
+👉 **A quoi est-ce que ça ressemble ?**\
 \
 📷 **Landing page :**\
 ![Flincy_Landing](https://user-images.githubusercontent.com/87578863/147833356-fd2969b6-fba4-4ad8-ae28-0ce06fa31333.png)
