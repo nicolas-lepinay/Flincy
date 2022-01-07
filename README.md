@@ -6,9 +6,9 @@ Réalisé pour l'entreprise [Flincy](https://flincy.fr/).
 
 👉 **Comment la tester ?**\
 ⚠️ Nécéssite les fichiers **.env** (variables d'environnement secrètes). Ouvrir 3 terminaux :\
+\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terminal 1 : cd api ➜ npm i ➜ yarn start\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terminal 2 : cd client ➜ npm i ➜ yarn start\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terminal 3 : cd socket ➜ npm i ➜ yarn start\
 
 👉 **A quoi est-ce que ça ressemble ?**\
 \
