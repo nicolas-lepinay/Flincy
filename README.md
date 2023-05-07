@@ -1,16 +1,11 @@
 # Flincy
 
-👉 **Qu'est-ce que c'est ?**\
-Un prototype d'une application de livraison pour mobiles construite avec React, nodeJS, MongoDB et Stripe.
-Réalisé pour l'entreprise [Flincy](https://flincy.fr/).
+🍏 𝐅𝐥𝐢𝐧𝐜𝐲 : un prototype d'application de livraison pour mobiles réalisée pour l'entreprise [Flincy](https://www.linkedin.com/company/flincy/).
 
-👉 **Comment la tester ?**\
-⚠️ Nécéssite les fichiers **.env** (variables d'environnement secrètes). Ouvrir 2 terminaux :\
-\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terminal 1 : cd api ➜ npm i ➜ yarn start\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terminal 2 : cd client ➜ npm i ➜ yarn start\
+⚙️ Développée avec 𝐑𝐞𝐚𝐜𝐭, 𝐧𝐨𝐝𝐞𝐉𝐒/𝐄𝐱𝐩𝐫𝐞𝐬𝐬, 𝐌𝐨𝐧𝐠𝐨𝐃𝐁 et 𝐒𝐭𝐫𝐢𝐩𝐞.
 
-👉 **A quoi est-ce que ça ressemble ?**\
+👉 𝐂𝐨𝐧𝐭𝐫𝐢𝐛𝐮𝐭eu𝐫 : Nicolas Lépinay.
+
 \
 📷 **Landing page :**\
 ![Flincy_Landing](https://user-images.githubusercontent.com/87578863/147833356-fd2969b6-fba4-4ad8-ae28-0ce06fa31333.png)
